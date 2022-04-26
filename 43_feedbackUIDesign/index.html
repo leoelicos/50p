@@ -3,12 +3,24 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="" type="image/x-icon" />
 		<link rel="stylesheet" href="./style.css" />
-		<title>My Project</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<title>Let Us Know Your Feedback</title>
 	</head>
 	<body>
-		<h1>Project Starter</h1>
-
+		<div id="panel" class="panel-container">
+			<strong>How satisfied are you with our <br />customer support performance?</strong>
+			<div class="ratings-container">
+				<div class="rating">
+					<img src="https://img.icons8.com/emoji/256/disappointed-face.png" alt="unhappy" />
+					<small>Unhappy</small>
+				</div>
+				<div class="rating"><img src="https://storage.googleapis.com/emojibuff.appspot.com/i/go/1f610.png" alt="neutral" /><small>Neutral</small></div>
+				<div class="rating"><img src="https://www.virtualverse.one/forums/styles/themehouse/reactions/happy.png" alt="satisfied" /><small>Satisfied</small></div>
+			</div>
+			<button class="btn" id="send">Send Review</button>
+		</div>
 		<script src="./script.js"></script>
 	</body>
 </html>
