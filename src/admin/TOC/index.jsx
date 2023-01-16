@@ -1,4 +1,4 @@
-import list from './data/apps'
+import list from '../../data/apps'
 import { Link } from 'react-router-dom'
 import './style/toc.css'
 

@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 // admin
 import Toc from './admin/TOC/index'
 import ErrorPage from './admin/ErrorPage/index'
-import apps from './admin/TOC/data/apps'
+import apps from './data/apps'
 
 // global style
 import './style/main.css'
