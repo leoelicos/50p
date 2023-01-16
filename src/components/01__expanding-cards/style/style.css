@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+.app_01 {
+  box-sizing: border-box;
+}
+.app_01 .body {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.app_01 .container {
+  display: flex;
+  width: 90vw;
+}
+.app_01 .panel {
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 50px;
+  color: #fff;
+  cursor: pointer;
+  flex: 0.5;
+  margin: 10px;
+  position: relative;
+  transition: flex 0.7s ease-in;
+}
+
+.app_01 .panel h3 {
+  font-size: 24px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
+}
+
+.app_01 .panel.active {
+  flex: 5;
+}
+
+.app_01 .panel.active h3 {
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s;
+}
+
+@media (max-width: 480px) {
+  .app_01 .container {
+    width: 100vw;
+  }
+
+  .app_01 .panel:nth-of-type(4),
+  .app_01 .panel:nth-of-type(5) {
+    display: none;
+  }
+}
