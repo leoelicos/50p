@@ -48,7 +48,7 @@
   height: 4px;
   width: 0%;
   z-index: 1;
-  transition: 0.4s ease;
+  transition: 0.5s ease;
 }
 
 .app_02 .circle {
@@ -61,11 +61,20 @@
   align-items: center;
   justify-content: center;
   border: 3px solid #e0e0e0;
-  transition: 0.4s ease;
+  transition: border linear;
+  transition-duration: 250ms;
   z-index: 2;
 }
 .app_02 .circle.active {
-  border-color: #3498db;
+  animation: slidein 500ms linear 250ms 1 normal forwards;
+}
+@keyframes slidein {
+  0% {
+    border-color: #e0e0e0;
+  }
+  100% {
+    border-color: #3498db;
+  }
 }
 
 .app_02 .btn {
