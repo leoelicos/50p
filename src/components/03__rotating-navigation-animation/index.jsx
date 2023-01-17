@@ -1,17 +1,26 @@
+import { useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars, faEnvelope, faHome, faTimes, faUserAlt } from '@fortawesome/free-solid-svg-icons'
+
 import './style/style.css'
+
 export default function RotatingNavigationAnimation() {
+  const [open, setOpen] = useState(false)
+  const handleClickOpen = () => {
+    setOpen(true)
+  }
+  const handleClickClose = () => {
+    setOpen(false)
+  }
+
   return (
     <div className='app-03'>
       <div className='body'>
-        <div className='container'>
+        <Container open={open}>
           <div className='circle-container show-nav'>
             <div className='circle'>
-              <button id='close'>
-                <i className='fas fa-times'></i>
-              </button>
-              <button id='open'>
-                <i className='fas fa-bars'></i>
-              </button>
+              <Close handleClickClose={handleClickClose} />
+              <Open handleClickOpen={handleClickOpen} />
             </div>
           </div>
           <div className='content'>
@@ -25,17 +34,17 @@ export default function RotatingNavigationAnimation() {
             />
             <p>Thanks</p>
           </div>
-        </div>
+        </Container>
         <nav>
           <ul>
             <li>
-              <i className='fas fa-home'> Home</i>
+              <FontAwesomeIcon icon={faHome} /> Home
             </li>
             <li>
-              <i className='fas fa-user-alt'> About</i>
+              <FontAwesomeIcon icon={faUserAlt} /> About
             </li>
             <li>
-              <i className='fas fa-envelope'> Contact</i>
+              <FontAwesomeIcon icon={faEnvelope} /> Contact
             </li>
           </ul>
         </nav>
@@ -44,9 +53,26 @@ export default function RotatingNavigationAnimation() {
   )
 }
 
-const open = document.getElementById('open')
-const close = document.getElementById('close')
-const container = document.querySelector('.container')
+function Open({ handleClickOpen }) {
+  return (
+    <button
+      id='open'
+      onClick={handleClickOpen}>
+      <FontAwesomeIcon icon={faBars} />
+    </button>
+  )
+}
 
-open.addEventListener('click', () => container.classList.add('show-nav'))
-close.addEventListener('click', () => container.classList.remove('show-nav'))
+function Close({ handleClickClose }) {
+  return (
+    <button
+      id='close'
+      onClick={handleClickClose}>
+      <FontAwesomeIcon icon={faTimes} />
+    </button>
+  )
+}
+
+function Container({ children, open }) {
+  return <div className={`container ${open ? 'show-nav' : ''}`}>{children}</div>
+}
