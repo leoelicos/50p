@@ -1,3 +1,5 @@
+import './style/style.css'
+
 export default function HiddenSearchWidget() {
   return (
     <div className='app-04'>
