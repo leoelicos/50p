@@ -1,3 +1,5 @@
+import './style/style.css'
+
 export default function BlurryLoading() {
   return (
     <App>
