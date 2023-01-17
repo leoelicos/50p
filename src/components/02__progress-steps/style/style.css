@@ -61,8 +61,6 @@
   align-items: center;
   justify-content: center;
   border: 3px solid #e0e0e0;
-  transition: border linear;
-  transition-duration: 250ms;
   z-index: 2;
 }
 .app_02 .circle.active {
