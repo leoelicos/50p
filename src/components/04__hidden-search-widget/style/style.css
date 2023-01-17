@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-* {
+.app-04 {
   box-sizing: border-box;
 }
-body {
+.app-04 .body {
   background-image: linear-gradient(90deg, #7d5fff, #7158e2);
   font-family: 'Roboto', sans-serif;
   display: flex;
@@ -13,12 +13,12 @@ body {
   overflow: hidden;
   margin: 0;
 }
-.search {
+.app-04 .search {
   position: relative;
   height: 50px;
 }
 
-.search .input {
+.app-04 .search .input {
   background-color: #fff;
   border: 0;
   font-size: 18px;
@@ -28,7 +28,7 @@ body {
   transition: width 0.3x ease;
 }
 
-.btn {
+.app-04 .btn {
   background-color: #fff;
   border: 0;
   cursor: pointer;
@@ -41,15 +41,15 @@ body {
   transition: transform 0.3s ease;
 }
 
-.btn:focus,
-.input.focus {
+.app-04 .btn:focus,
+.app-04 .input.focus {
   outline: none;
 }
 
-.search.active .input {
+.app-04 .search.active .input {
   width: 200px;
 }
 
-.search.active .btn {
+.app-04 .search.active .btn {
   transform: translateX(198px);
 }
