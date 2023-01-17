@@ -3,8 +3,12 @@ import './style/style.css'
 export default function ProgressSteps() {
   const circles = [1, 2, 3, 4]
   const [active, setActive] = useState(0)
-  const handleNext = () => setActive((prev) => prev + 1)
-  const handlePrev = () => setActive((prev) => prev - 1)
+  const handleNext = () => {
+    setActive((prev) => prev + 1)
+  }
+  const handlePrev = () => {
+    setActive((prev) => prev - 1)
+  }
   return (
     <App>
       <Body>
