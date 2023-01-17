@@ -1,3 +1,4 @@
+import './style/style.css'
 export default function RotatingNavigationAnimation() {
   return (
     <div className='app-03'>
