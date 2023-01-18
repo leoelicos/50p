@@ -1,3 +1,5 @@
+import './style/style.css'
+
 export default function FormWave() {
   return <div>FormWave</div>
 }
