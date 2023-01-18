@@ -18,8 +18,12 @@ export default function FormWave() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                autoComplete='new-text'
               />
-              <label htmlFor='textElement'>Email</label>
+              <Label
+                htmlFor='textElement'
+                children={'Email'}
+              />
             </FormControl>
             <FormControl>
               <input
@@ -28,8 +32,12 @@ export default function FormWave() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                autoComplete='new-password'
               />
-              <label htmlFor='passwordElement'>Password</label>
+              <Label
+                htmlFor='passwordElement'
+                children={'Password'}
+              />
             </FormControl>
             <Button>Login</Button>
             <Text>
@@ -46,20 +54,9 @@ const App = ({ children }) => <div className='app-08'>{children}</div>
 const Body = ({ children }) => <div className='body'>{children}</div>
 const Container = ({ children }) => <div className='container'>{children}</div>
 const FormControl = ({ children }) => <div className='form-control'>{children}</div>
-const Button = ({ children }) => <div className='btn'>{children}</div>
-const Text = ({ children }) => <div className='text'>{children}</div>
-/* 
-    
-    
-    const labels = document.querySelectorAll('.form-control label');
-
-labels.forEach((label) => {
-	label.innerHTML = label.innerText
-		.split('')
-		.map((letter, idx) => `<span style="transition-delay:${idx * 50}ms">${letter}</span>`)
-		.join('');
-});
-
-
-
-*/
+const Button = ({ children }) => <button className='btn'>{children}</button>
+const Text = ({ children }) => <p className='text'>{children}</p>
+const Label = ({ children, htmlFor }) => {
+  const x = children.split('').map((letter, idx) => <span style={{ transitionDelay: `${idx * 50}ms` }}>{letter}</span>)
+  return <label htmlFor={htmlFor}>{x}</label>
+}
