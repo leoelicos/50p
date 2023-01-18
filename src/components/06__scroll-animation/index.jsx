@@ -10,35 +10,14 @@ export default function ScrollAnimation() {
 
   function checkBoxes() {
     const triggerBottom = (window.innerHeight / 5) * 4
+    let refs = [ref1, ref2, ref3, ref4, ref5, ref6]
     //
-    let top = ref1.current.getBoundingClientRect().top
-    if (top < triggerBottom) ref1.current.classList.add('show')
-    else ref1.current.classList.remove('show')
+    refs.forEach((ref) => {
+      let top = ref.current.getBoundingClientRect().top
 
-    //
-    top = ref2.current.getBoundingClientRect().top
-    if (top < triggerBottom) ref2.current.classList.add('show')
-    else ref2.current.classList.remove('show')
-
-    //
-    top = ref3.current.getBoundingClientRect().top
-    if (top < triggerBottom) ref3.current.classList.add('show')
-    else ref3.current.classList.remove('show')
-
-    //
-    top = ref4.current.getBoundingClientRect().top
-    if (top < triggerBottom) ref4.current.classList.add('show')
-    else ref4.current.classList.remove('show')
-
-    //
-    top = ref5.current.getBoundingClientRect().top
-    if (top < triggerBottom) ref5.current.classList.add('show')
-    else ref5.current.classList.remove('show')
-
-    //
-    top = ref6.current.getBoundingClientRect().top
-    if (top < triggerBottom) ref6.current.classList.add('show')
-    else ref6.current.classList.remove('show')
+      if (top < triggerBottom) ref.current.classList.add('show')
+      else ref.current.classList.remove('show')
+    })
   }
 
   useEffect(() => {
