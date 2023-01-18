@@ -93,3 +93,10 @@
   color: lightblue;
   transform: translateY(-30px);
 }
+
+input:-webkit-autofill + label,
+input:-webkit-autofill:hover + label,
+input:-webkit-autofill:focus + label,
+input:-webkit-autofill:active + label {
+  margin-top: -1rem;
+}
