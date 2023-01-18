@@ -1,24 +1,23 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './style/style.css'
 export default function ScrollAnimation() {
   const refs = useRef([])
+  const [actives, setActives] = useState([])
+  const triggerBottom = useRef((window.innerHeight / 5) * 4)
 
   function checkBoxes() {
-    const triggerBottom = (window.innerHeight / 5) * 4
-    // console.log('Refs current', refs.current)
-    refs.current.forEach((ref) => {
-      let top = ref.getBoundingClientRect().top
-
-      if (top < triggerBottom) ref.classList.add('show')
-      else ref.classList.remove('show')
-    })
+    setActives(
+      refs.current.map((ref) => {
+        let top = ref.getBoundingClientRect().top
+        if (top < triggerBottom.current) return true
+        return false
+      })
+    )
   }
 
   useEffect(() => {
     window.addEventListener('scroll', checkBoxes)
-
     checkBoxes()
-
     return () => window.removeEventListener('scroll', checkBoxes)
   }, [])
 
@@ -29,8 +28,10 @@ export default function ScrollAnimation() {
         {new Array(5).fill('Content').map((text, i) => (
           <div
             key={i}
-            className='box'
-            ref={(e) => refs.current.push(e)}>
+            className={`box ${actives[i] ? 'show' : ''}`}
+            ref={(e) => {
+              refs.current[i] = e
+            }}>
             <h2>{text}</h2>
           </div>
         ))}
