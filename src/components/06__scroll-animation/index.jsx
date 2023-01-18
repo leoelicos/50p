@@ -5,7 +5,7 @@ export default function ScrollAnimation() {
 
   function checkBoxes() {
     const triggerBottom = (window.innerHeight / 5) * 4
-    console.log('Refs current', refs.current)
+    // console.log('Refs current', refs.current)
     refs.current.forEach((ref) => {
       let top = ref.getBoundingClientRect().top
 
@@ -26,36 +26,14 @@ export default function ScrollAnimation() {
     <div className='app-06'>
       <div className='body'>
         <h1>Scroll to see the animation</h1>
-        <div
-          className='box'
-          ref={(e) => refs.current.push(e)}>
-          <h2>Content</h2>
-        </div>
-        <div
-          className='box'
-          ref={(e) => refs.current.push(e)}>
-          <h2>Content</h2>
-        </div>
-        <div
-          className='box'
-          ref={(e) => refs.current.push(e)}>
-          <h2>Content</h2>
-        </div>
-        <div
-          className='box'
-          ref={(e) => refs.current.push(e)}>
-          <h2>Content</h2>
-        </div>
-        <div
-          className='box'
-          ref={(e) => refs.current.push(e)}>
-          <h2>Content</h2>
-        </div>
-        <div
-          className='box'
-          ref={(e) => refs.current.push(e)}>
-          <h2>Content</h2>
-        </div>
+        {new Array(5).fill('Content').map((text, i) => (
+          <div
+            key={i}
+            className='box'
+            ref={(e) => refs.current.push(e)}>
+            <h2>{text}</h2>
+          </div>
+        ))}
       </div>
     </div>
   )
