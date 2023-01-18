@@ -44,12 +44,12 @@ export default function ScrollAnimation() {
 
 const App = ({ children }) => <div className='app-06'>{children}</div>
 const Body = ({ children }) => <div className='body'>{children}</div>
-const Box = forwardRef(function Box(props, ref) {
+const Box = forwardRef(function Box({ active, text }, ref) {
   return (
     <div
-      className={`box ${props.active ? 'show' : ''}`}
+      className={`box ${active ? 'show' : ''}`}
       ref={ref}>
-      <h2>{props.text}</h2>
+      <h2>{text}</h2>
     </div>
   )
 })
