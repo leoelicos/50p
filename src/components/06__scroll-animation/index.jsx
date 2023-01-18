@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
+import { faForwardStep } from '@fortawesome/free-solid-svg-icons'
+import { forwardRef, useEffect, useRef, useState } from 'react'
 import './style/style.css'
 export default function ScrollAnimation() {
   const refs = useRef([])
@@ -27,14 +28,14 @@ export default function ScrollAnimation() {
       <Body>
         <h1>Scroll to see the animation</h1>
         {content.current.map((text, i) => (
-          <div
+          <Box
             key={i}
-            className={`box ${actives[i] ? 'show' : ''}`}
+            active={actives[i]}
             ref={(e) => {
               refs.current[i] = e
-            }}>
-            <h2>{text}</h2>
-          </div>
+            }}
+            text={text}
+          />
         ))}
       </Body>
     </App>
@@ -43,3 +44,12 @@ export default function ScrollAnimation() {
 
 const App = ({ children }) => <div className='app-06'>{children}</div>
 const Body = ({ children }) => <div className='body'>{children}</div>
+const Box = forwardRef(function Box(props, ref) {
+  return (
+    <div
+      className={`box ${props.active ? 'show' : ''}`}
+      ref={ref}>
+      <h2>{props.text}</h2>
+    </div>
+  )
+})
