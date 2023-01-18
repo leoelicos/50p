@@ -4,6 +4,7 @@ export default function ScrollAnimation() {
   const refs = useRef([])
   const [actives, setActives] = useState([])
   const triggerBottom = useRef((window.innerHeight / 5) * 4)
+  const content = useRef(['Content', 'Content', 'Content', 'Content', 'Content', 'Content'])
 
   function checkBoxes() {
     setActives(
@@ -25,7 +26,7 @@ export default function ScrollAnimation() {
     <App>
       <Body>
         <h1>Scroll to see the animation</h1>
-        {new Array(5).fill('Content').map((text, i) => (
+        {content.current.map((text, i) => (
           <div
             key={i}
             className={`box ${actives[i] ? 'show' : ''}`}
