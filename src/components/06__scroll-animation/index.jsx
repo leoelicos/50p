@@ -1,4 +1,3 @@
-import { faForwardStep } from '@fortawesome/free-solid-svg-icons'
 import { forwardRef, useEffect, useRef, useState } from 'react'
 import './style/style.css'
 export default function ScrollAnimation() {
