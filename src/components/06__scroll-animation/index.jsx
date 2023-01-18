@@ -22,8 +22,8 @@ export default function ScrollAnimation() {
   }, [])
 
   return (
-    <div className='app-06'>
-      <div className='body'>
+    <App>
+      <Body>
         <h1>Scroll to see the animation</h1>
         {new Array(5).fill('Content').map((text, i) => (
           <div
@@ -35,7 +35,10 @@ export default function ScrollAnimation() {
             <h2>{text}</h2>
           </div>
         ))}
-      </div>
-    </div>
+      </Body>
+    </App>
   )
 }
+
+const App = ({ children }) => <div className='app-06'>{children}</div>
+const Body = ({ children }) => <div className='body'>{children}</div>
