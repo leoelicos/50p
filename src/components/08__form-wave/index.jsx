@@ -1,29 +1,53 @@
+import { useState } from 'react'
 import './style/style.css'
 
 export default function FormWave() {
-  return <div>FormWave</div>
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  return (
+    <App>
+      <Body>
+        <Container>
+          <h1>Please Login</h1>
+          <form>
+            <FormControl>
+              <input
+                name='textElement'
+                type='text'
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <label htmlFor='textElement'>Email</label>
+            </FormControl>
+            <FormControl>
+              <input
+                name='passwordElement'
+                type='password'
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <label htmlFor='passwordElement'>Password</label>
+            </FormControl>
+            <Button>Login</Button>
+            <Text>
+              Don't have an account? <a href='#'>Register</a>
+            </Text>
+          </form>
+        </Container>
+      </Body>
+    </App>
+  )
 }
 
-/* 
-
-		<div class="container">
-			<h1>Please Login</h1>
-			<form>
-				<div class="form-control">
-					<input type="text" required />
-					<label>Email</label>
-				</div>
-				<div class="form-control">
-					<input type="password" required />
-					<label>Password</label>
-				</div>
-				<button class="btn">Login</button>
-				<p class="text">Don't have an account? <a href="#">Register</a></p>
-			</form>
-		</div>
-    
-    */
-
+const App = ({ children }) => <div className='app-08'>{children}</div>
+const Body = ({ children }) => <div className='body'>{children}</div>
+const Container = ({ children }) => <div className='container'>{children}</div>
+const FormControl = ({ children }) => <div className='form-control'>{children}</div>
+const Button = ({ children }) => <div className='btn'>{children}</div>
+const Text = ({ children }) => <div className='text'>{children}</div>
 /* 
     
     
