@@ -1,4 +1,31 @@
+import { useEffect, useState } from 'react'
+
+import './style/style.css'
+
 export default function DadJokes() {
+  const [joke, setJoke] = useState('')
+
+  const [loading, setLoading] = useState(false)
+
+  async function generateJoke() {
+    setLoading(true)
+    const config = {
+      headers: {
+        Accept: 'application/json'
+      }
+    }
+    const res = await fetch('https://icanhazdadjoke.com', config)
+
+    const data = await res.json()
+
+    setJoke(data.joke)
+    setLoading(false)
+  }
+
+  useEffect(() => {
+    generateJoke()
+  }, [])
+
   return (
     <div className='app-10'>
       <div className='body'>
@@ -6,33 +33,17 @@ export default function DadJokes() {
           <h3>Don't Laugh Challenge</h3>
           <div
             id='joke'
-            className='joke'></div>
+            className='joke'>
+            {joke}
+          </div>
           <button
             id='jokeBtn'
-            className='btn'>
-            Get Another Joke
+            className={`btn ${loading ? 'loading' : ''}`}
+            onClick={generateJoke}>
+            {loading ? 'Getting joke' : 'Get Another Joke'}
           </button>
         </div>
       </div>
     </div>
   )
-}
-
-const jokeEl = document.getElementById('joke')
-const jokeBtn = document.getElementById('jokeBtn')
-jokeBtn.addEventListener('click', generateJoke)
-
-generateJoke()
-// USING ASYNC/AWAIT
-async function generateJoke() {
-  const config = {
-    headers: {
-      Accept: 'application/json'
-    }
-  }
-  const res = await fetch('https://icanhazdadjoke.com', config)
-
-  const data = await res.json()
-
-  jokeEl.innerHTML = data.joke
 }
