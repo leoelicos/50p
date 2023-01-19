@@ -5,33 +5,52 @@ export default function RandomChoicePicker() {
   const tagsEl = useRef(null)
 
   const [tags, setTags] = useState([])
+  const [highlighted, setHighlighted] = useState(null)
+  const [typed, setTyped] = useState('')
 
-  const createTags = (input) => {
+  const [lastKey, setLastKey] = useState('')
+
+  useEffect(() => {
     setTags(
-      input
+      typed
         .split(',')
         .filter((tag) => tag.trim() !== '')
         .map((tag) => tag.trim())
     )
-  }
+  }, [typed])
 
   useEffect(() => {
-    textarea.current.addEventListener('keyup', (e) => {
-      createTags(e.target.value)
+    if (lastKey === 'Enter') {
+      setTyped((prev) => prev.slice(0, -1))
+      randomSelect()
+      setLastKey(null)
+    }
+  }, [lastKey])
 
-      if (e.key === 'Enter') {
-        setTimeout(() => {
-          e.target.value = ''
-        }, 10)
-
-        randomSelect()
-      }
-    })
+  useEffect(() => {
+    textarea.current.addEventListener('keyup', (e) => setLastKey(e.key))
   }, [])
 
   useEffect(() => {
     textarea.current.focus()
   }, [])
+
+  function pickRandomTag() {
+    return Math.floor(Math.random() * tags.length)
+  }
+
+  function randomSelect() {
+    const times = 30
+
+    const interval = setInterval(() => {
+      const randomTag = pickRandomTag()
+      setHighlighted(randomTag)
+    }, 100)
+
+    setTimeout(() => {
+      clearInterval(interval)
+    }, times * 100)
+  }
 
   return (
     <div className='app-13'>
@@ -45,15 +64,18 @@ export default function RandomChoicePicker() {
           <textarea
             ref={textarea}
             placeholder='Enter choices here…'
-            id='textarea'></textarea>
+            id='textarea'
+            value={typed}
+            onChange={(e) => setTyped(e.target.value)}></textarea>
 
           <div
             id='tags'
             ref={tagsEl}>
             {tags.map((tag, i) => (
               <span
-                className='tag'
-                key={i}>
+                className={`tag ${highlighted === i ? 'highlight' : ''}`}
+                key={i}
+                highlighted={highlighted}>
                 {tag}
               </span>
             ))}
@@ -62,40 +84,4 @@ export default function RandomChoicePicker() {
       </div>
     </div>
   )
-}
-
-function randomSelect() {
-  const times = 30
-
-  const interval = setInterval(() => {
-    const randomTag = pickRandomTag()
-
-    highlightTag(randomTag)
-
-    setTimeout(() => {
-      unhighlightTag(randomTag)
-    }, 100)
-  }, 100)
-
-  setTimeout(() => {
-    clearInterval(interval)
-
-    setTimeout(() => {
-      const randomTag = pickRandomTag()
-      highlightTag(randomTag)
-    }, 100)
-  }, times * 100)
-}
-
-function pickRandomTag() {
-  const tags = document.querySelectorAll('.tag')
-  return tags[Math.floor(Math.random() * tags.length)]
-}
-
-function highlightTag(tag) {
-  tag.classList.add('highlight')
-}
-
-function unhighlightTag(tag) {
-  tag.classList.remove('highlight')
 }
