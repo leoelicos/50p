@@ -37,7 +37,7 @@ import Hoverboard from '../components/36__hoverboard/index.jsx'
 import Pokedex from '../components/37__pokedex/index.jsx'
 import MobileTabNavigation from '../components/38__mobile-tab-navigation/index.jsx'
 import PasswordStrengthBackground from '../components/39__password-strength-background/index.jsx'
-import _3DBackgroundBoxes from '../components/40__3d-background-boxes/index.jsx'
+import BackgroundBoxes from '../components/40__3d-background-boxes/index.jsx'
 import VerifyAccountUI from '../components/41__verify-account-ui/index.jsx'
 import LiveUserFilter from '../components/42__live-user-filter/index.jsx'
 import FeedbackUIDesign from '../components/43__feedback-ui-design/index.jsx'
@@ -90,7 +90,7 @@ const apps = [
   { name: 'Pokedex', link: '37-pokedex', element: <Pokedex /> },
   { name: 'Mobile Tab Navigation', link: '38-mobile-tab-navigation', element: <MobileTabNavigation /> },
   { name: 'Password Strength Background', link: '39-password-strength-background', element: <PasswordStrengthBackground /> },
-  { name: '3D Background Boxes', link: '40-3D-background-boxes', element: <_3DBackgroundBoxes /> },
+  { name: '3D Background Boxes', link: '40-3D-background-boxes', element: <BackgroundBoxes /> },
   { name: 'Verify Account UI', link: '41-verify-account-ui', element: <VerifyAccountUI /> },
   { name: 'Live User Filter', link: '42-live-user-filter', element: <LiveUserFilter /> },
   { name: 'Feedback UI Design', link: '43-feedback-ui-design', element: <FeedbackUIDesign /> },
