@@ -1,4 +1,38 @@
+import { useEffect, useRef, useState } from 'react'
+import './style/style.css'
 export default function RandomChoicePicker() {
+  const textarea = useRef(null)
+  const tagsEl = useRef(null)
+
+  const [tags, setTags] = useState([])
+
+  const createTags = (input) => {
+    setTags(
+      input
+        .split(',')
+        .filter((tag) => tag.trim() !== '')
+        .map((tag) => tag.trim())
+    )
+  }
+
+  useEffect(() => {
+    textarea.current.addEventListener('keyup', (e) => {
+      createTags(e.target.value)
+
+      if (e.key === 'Enter') {
+        setTimeout(() => {
+          e.target.value = ''
+        }, 10)
+
+        randomSelect()
+      }
+    })
+  }, [])
+
+  useEffect(() => {
+    textarea.current.focus()
+  }, [])
+
   return (
     <div className='app-13'>
       <div className='body'>
@@ -9,56 +43,26 @@ export default function RandomChoicePicker() {
             Press enter when you're done.
           </h3>
           <textarea
+            ref={textarea}
             placeholder='Enter choices here…'
             id='textarea'></textarea>
 
-          <div id='tags'>
-            <span className='tag'>Choice 1</span>
-            <span className='tag'>Choice 2</span>
-            <span className='tag'>Choice 3</span>
+          <div
+            id='tags'
+            ref={tagsEl}>
+            {tags.map((tag, i) => (
+              <span
+                className='tag'
+                key={i}>
+                {tag}
+              </span>
+            ))}
           </div>
         </div>
       </div>
     </div>
   )
 }
-
-const tagsEl = document.getElementById('tags')
-const textarea = document.getElementById('textarea')
-
-textarea.focus()
-
-textarea.addEventListener('keyup', (e) => {
-  createTags(e.target.value)
-
-  if (e.key === 'Enter') {
-    setTimeout(() => {
-      e.target.value = ''
-    }, 10)
-
-    randomSelect()
-  }
-})
-
-// *****************************
-
-function createTags(input) {
-  const tags = input
-    .split(',')
-    .filter((tag) => tag.trim() !== '')
-    .map((tag) => tag.trim())
-
-  tagsEl.innerHTML = ''
-
-  tags.forEach((tag) => {
-    const tagEl = document.createElement('span')
-    tagEl.classList.add('tag')
-    tagEl.innerText = tag
-    tagsEl.appendChild(tagEl)
-  })
-}
-
-// *****************************
 
 function randomSelect() {
   const times = 30
@@ -83,20 +87,14 @@ function randomSelect() {
   }, times * 100)
 }
 
-// *****************************
-
 function pickRandomTag() {
   const tags = document.querySelectorAll('.tag')
   return tags[Math.floor(Math.random() * tags.length)]
 }
 
-// *****************************
-
 function highlightTag(tag) {
   tag.classList.add('highlight')
 }
-
-// *****************************
 
 function unhighlightTag(tag) {
   tag.classList.remove('highlight')
