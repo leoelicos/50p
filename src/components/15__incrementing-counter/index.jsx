@@ -1,54 +1,46 @@
+import { useEffect, useState } from 'react'
 import './style/style.css'
 
 export default function IncrementingCounter() {
+  const counters = [
+    { style: 'fab fa-twitter fa-3x', target: 12000, text: 'Twitter Followers' },
+    { style: 'fab fa-youtube fa-3x', target: 5000, text: 'YouTube Subscribers' },
+    { style: 'fab fa-facebook fa-3x', target: 7500, text: 'Facebook Fans' }
+  ]
+
   return (
     <div className='app-15'>
       <div className='body'>
-        <div className='counter-container'>
-          <i className='fab fa-twitter fa-3x'></i>
-          <div
-            className='counter'
-            data-target='12000'></div>
-          <span>Twitter Followers</span>
-        </div>
-        <div className='counter-container'>
-          <i className='fab fa-youtube fa-3x'></i>
-          <div
-            className='counter'
-            data-target='5000'></div>
-          <span>YouTube Subscribers</span>
-        </div>
-        <div className='counter-container'>
-          <i className='fab fa-facebook fa-3x'></i>
-          <div
-            className='counter'
-            data-target='7500'></div>
-          <span>Facebook Fans</span>
-        </div>
-        <script src='./script.js'></script>
+        {counters.map(({ style, target, text }) => (
+          <Counter
+            key={target}
+            style={style}
+            target={target}
+            text={text}
+          />
+        ))}
       </div>
     </div>
   )
 }
 
-const counters = document.querySelectorAll('.counter')
+function Counter({ style, target, text }) {
+  const [val, setVal] = useState(0)
 
-counters.forEach((counter) => {
-  counter.innerText = '0'
+  useEffect(() => {
+    const t = setTimeout(() => {
+      if (val + target / 200 > target) {
+        clearTimeout(t)
+        setVal(target)
+      } else setVal((prev) => prev + Math.floor(target / 200))
+    }, 1)
+  }, [val])
 
-  const updateCounter = () => {
-    const target = +counter.getAttribute('data-target')
-    const c = +counter.innerText
-
-    const increment = target / 200
-
-    if (c < target) {
-      counter.innerText = `${Math.floor(c + increment)}`
-      setTimeout(updateCounter, 1)
-    } else {
-      counter.innerText = target
-    }
-  }
-
-  updateCounter()
-})
+  return (
+    <div className='counter-container'>
+      <i className={style} />
+      <span>{text}</span>
+      <div className='counter'>{val}</div>
+    </div>
+  )
+}
