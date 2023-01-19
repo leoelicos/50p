@@ -17,6 +17,7 @@
 .app_01 .container {
   display: flex;
   width: 90vw;
+  max-width: 968px;
 }
 .app_01 .panel {
   background-size: auto 100%;
