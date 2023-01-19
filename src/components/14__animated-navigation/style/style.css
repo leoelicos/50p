@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
-* {
+.app-14 {
   box-sizing: border-box;
 }
-body {
+
+.app-14 body {
   background-color: #eafbff;
   background-image: linear-gradient(to bottom, #eafbff 0%, #eafbff 50%, #5290f9 50%, #5290f9 100%);
   font-family: 'Muli', sans-serif;
@@ -14,7 +15,7 @@ body {
   margin: 0;
 }
 
-nav {
+.app-14 nav {
   background-color: white;
   padding: 20px;
   width: 80px;
@@ -26,11 +27,11 @@ nav {
   transition: width 0.6s linear;
 }
 
-nav.active {
+.app-14 nav.active {
   width: 350px;
 }
 
-nav ul {
+.app-14 nav ul {
   display: flex;
   list-style-type: none;
   padding: 0;
@@ -39,29 +40,29 @@ nav ul {
   transition: width 0.6 linear;
 }
 
-nav.active ul {
+.app-14 nav.active ul {
   width: 100%;
 }
 
-nav ul li {
+.app-14 nav ul li {
   transform: rotateY(0deg);
   opacity: 0;
   transition: transform 0.6s linear, opacity 0.6s linear;
 }
 
-nav.active ul li {
+.app-14 nav.active ul li {
   opacity: 1;
   transform: rotateY(360deg);
 }
 
-nav ul a {
+.app-14 nav ul a {
   position: relative;
   color: #000;
   text-decoration: none;
   margin: 0 10px;
 }
 
-.icon {
+.app-14 .icon {
   background-color: #fff;
   border: 0;
   cursor: pointer;
@@ -71,11 +72,11 @@ nav ul a {
   width: 30px;
 }
 
-.icon:focus {
+.app-14 .icon:focus {
   outline: 0;
 }
 
-.icon .line {
+.app-14 .icon .line {
   background-color: #5290f9;
   height: 2px;
   width: 20px;
@@ -85,15 +86,15 @@ nav ul a {
   transition: transform 0.6s linear;
 }
 
-.icon .line2 {
+.app-14 .icon .line2 {
   top: auto;
   bottom: 10px;
 }
 
-nav.active .icon .line1 {
+.app-14 nav.active .icon .line1 {
   transform: rotate(-765deg) translateY(5.5px);
 }
 
-nav.active .icon .line2 {
+.app-14 nav.active .icon .line2 {
   transform: rotate(765deg) translateY(-5.5px);
 }
