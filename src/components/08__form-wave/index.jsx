@@ -57,6 +57,12 @@ const FormControl = ({ children }) => <div className='form-control'>{children}</
 const Button = ({ children }) => <button className='btn'>{children}</button>
 const Text = ({ children }) => <p className='text'>{children}</p>
 const Label = ({ children, htmlFor }) => {
-  const x = children.split('').map((letter, idx) => <span style={{ transitionDelay: `${idx * 50}ms` }}>{letter}</span>)
+  const x = children.split('').map((letter, idx) => (
+    <span
+      key={idx}
+      style={{ transitionDelay: `${idx * 50}ms` }}>
+      {letter}
+    </span>
+  ))
   return <label htmlFor={htmlFor}>{x}</label>
 }
