@@ -1,27 +1,33 @@
+import { useState } from 'react'
+import './style/style.css'
 export default function AnimatedNavigation() {
+  const [active, setActive] = useState(false)
   return (
     <div className='app-14'>
       <div className='body'>
         <nav
-          className='active'
+          className={active ? 'active' : ''}
           id='nav'>
           <ul>
             <li>
-              <a href=''>Home</a>
+              <span>Home</span>
             </li>
             <li>
-              <a href=''>Works</a>
+              <span>Works</span>
             </li>
             <li>
-              <a href=''>About</a>
+              <span>About</span>
             </li>
             <li>
-              <a href=''>Contact</a>
+              <span>Contact</span>
             </li>
           </ul>
           <button
             className='icon'
-            id='toggle'>
+            id='toggle'
+            onClick={() => {
+              setActive((prev) => !prev)
+            }}>
             <div className='line line1'></div>
             <div className='line line2'></div>
           </button>
