@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css?family=Heebo:300&display=swap');
+
+.app-19 {
+  box-sizing: border-box;
+}
+
+.app-19 {
+  --primary-color: hsl(0, 0%, 0%);
+  --secondary-color: hsl(0, 0%, 100%);
+}
+
+.app-19 {
+  transition: all 0.5s ease-in; /* so when the background color changes, it will fade in */
+}
+
+.app-19.dark {
+  --primary-color: hsl(0, 0%, 100%);
+  --secondary-color: hsl(0, 0%, 20%);
+}
+
+.app-19.dark {
+  background-color: #111;
+  color: var(--primary-color);
+}
+
+.app-19 .body {
+  font-family: 'Heebo', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.app-19 .toggle {
+  /* toggle dark mode button */
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: 0;
+  border-radius: 4px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 100px;
+  cursor: pointer;
+}
+
+.app-19 .toggle:focus {
+  outline: none;
+}
+
+/* to wrap around the clock elements */
+.app-19 .clock-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-19 .clock {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.app-19 .needle {
+  background-color: var(--primary-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 65px;
+  width: 3px;
+  transform-origin: bottom center;
+  transition: all 1s linear;
+}
+
+.app-19 .needle.hour {
+  transform: translate(-50%, -100%) rotate(0deg);
+}
+.app-19 .needle.minute {
+  transform: translate(-50%, -100%) rotate(0deg);
+  height: 100px;
+}
+.app-19 .needle.second {
+  transform: translate(-50%, -100%) rotate(0deg);
+  height: 100px;
+  background-color: hsl(6, 79%, 57%);
+}
+
+.app-19 .center-point {
+  background-color: hsl(6, 79%, 57%);
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%; /* this will make it a circle */
+}
+
+.app-19 .center-point::after {
+  content: '';
+  background-color: var(--primary-color);
+  width: 5px;
+  height: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%; /* this will make it a circle */
+}
+
+.app-19 .time {
+  font-size: 60px;
+}
+
+.app-19 .date {
+  color: hsl(0, 0%, 67%);
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.app-19 .date .circle {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border-radius: 50%;
+  height: 18px;
+  width: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 18px;
+  transition: all 0.5s ease-in;
+  font-size: 12px;
+}
