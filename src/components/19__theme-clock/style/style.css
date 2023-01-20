@@ -13,12 +13,12 @@
   transition: all 0.5s ease-in; /* so when the background color changes, it will fade in */
 }
 
-.app-19 .dark {
+.app-19.dark {
   --primary-color: hsl(0, 0%, 100%);
   --secondary-color: hsl(0, 0%, 20%);
 }
 
-.app-19 .dark {
+.app-19.dark {
   background-color: #111;
   color: var(--primary-color);
 }
