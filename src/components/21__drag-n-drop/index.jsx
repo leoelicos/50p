@@ -1,27 +1,29 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import './style/style.css'
 
-const data21 = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }]
 export default function DragNDrop() {
+  const data = useRef([{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }])
   const [active, setActive] = useState(1)
 
   return (
     <div className='app-21'>
-      {data21.map(({ id }) => (
-        <Empty
-          key={id}
-          id={id}
-          active={active}
-          setActive={setActive}
-        />
-      ))}
+      <div className='body'>
+        {data.current.map(({ id }) => (
+          <Empty
+            key={id}
+            id={id}
+            active={active}
+            setActive={setActive}
+          />
+        ))}
+      </div>
     </div>
   )
 }
 
 const Empty = ({ id, active, setActive }) => {
   const [cName, setCName] = useState('empty')
-  const [pName, setPName] = useState('fill')
+  const [hovering, setHovering] = useState(false)
   return (
     <div
       key={id}
@@ -39,20 +41,22 @@ const Empty = ({ id, active, setActive }) => {
       onDrop={() => {
         setCName('empty')
         setActive(id)
+        setHovering(false) // onDrop replaces onDragEnd for some reason
       }}>
       {active === id ? (
         <div
-          className={pName}
+          className={hovering ? '' : 'fill'}
           draggable='true'
           onDragStart={() => {
-            setPName('fill  ')
-            // setTimeout(() => {
-            //   setPName('invisible')
-            // }, 0)
+            setHovering(false)
+            setTimeout(() => {
+              setHovering(true)
+            }, 0)
           }}
           onDragEnd={() => {
-            setPName('fill')
-          }}></div>
+            setHovering(false)
+          }}
+        />
       ) : null}
     </div>
   )
