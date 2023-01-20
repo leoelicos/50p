@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import './style/style.css'
+const { REACT_APP_17_TMDB_APIKEY } = process.env
+
 export default function MovieApp() {
-  const API_URL = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=181c54b33929efb327bf34779a8274dd&page=1'
+  const API_URL = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${REACT_APP_17_TMDB_APIKEY}&page=1`
   const IMG_PATH = 'https://image.tmdb.org/t/p/w1280'
-  const SEARCH_API = 'https://api.themoviedb.org/3/search/movie?api_key=181c54b33929efb327bf34779a8274dd&query="'
+  const SEARCH_API = `https://api.themoviedb.org/3/search/movie?api_key=${REACT_APP_17_TMDB_APIKEY}&query="`
 
   const [movies, setMovies] = useState(null)
 
@@ -11,7 +13,7 @@ export default function MovieApp() {
 
   useEffect(() => {
     getMovies(API_URL)
-  }, [])
+  }, [API_URL])
 
   const getClassByRate = (vote) => (vote >= 8 ? 'green' : vote >= 5 ? 'orange' : 'red')
 
