@@ -1,0 +1,44 @@
+.app-21 {
+  box-sizing: border-box;
+}
+
+.app-21 .body {
+  background-color: hsl(207, 44%, 49%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.app-21 .empty {
+  height: 150px;
+  width: 150px;
+  margin: 10px;
+  border: solid 3px hsl(0, 0%, 0%);
+  background: hsl(0, 0%, 100%);
+}
+
+.app-21 .fill {
+  background-image: url('https://source.unsplash.com/random/150x150');
+  height: 145px;
+  width: 145px;
+  cursor: pointer;
+}
+
+.app-21 .hold {
+  border: 5px solid hsl(0, 0%, 80%);
+}
+
+.app-21 .hovered {
+  background-color: #333;
+  border-color: white;
+  border-style: dashed;
+}
+
+@media screen and (max-width: 800px) {
+  .app-21 .body {
+    flex-direction: column;
+  }
+}
