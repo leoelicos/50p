@@ -1,77 +1,77 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-* {
-	box-sizing: border-box;
+.app-18 {
+  box-sizing: border-box;
 }
-body {
-	font-family: 'Roboto', sans-serif;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	height: 100vh;
-	overflow: hidden;
-	margin: 0;
-	background-position: center center;
-	background-size: cover;
-	transition: 0.4s ease;
-}
-
-body::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100vh;
-	background-color: rgba(0, 0, 0, 0.7);
-	z-index: -1;
+.app-18 .body {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  background-position: center center;
+  background-size: cover;
+  transition: 0.4s ease;
 }
 
-.slider-container {
-	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-	height: 70vh;
-	width: 70vw;
-	position: relative;
-	overflow: hidden;
+.app-18 .body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: -1;
 }
 
-.slide {
-	opacity: 0;
-	height: 100vh;
-	width: 100vw;
-	background-position: center center;
-	background-size: cover;
-	position: absolute;
-	top: -15vh;
-	left: -15vw;
-	transition: 0.4s ease;
-	z-index: 1;
+.app-18 .slider-container {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  height: 70vh;
+  width: 70vw;
+  position: relative;
+  overflow: hidden;
 }
 
-.slide.active {
-	opacity: 1;
+.app-18 .slide {
+  opacity: 0;
+  height: 100vh;
+  width: 100vw;
+  background-position: center center;
+  background-size: cover;
+  position: absolute;
+  top: -15vh;
+  left: -15vw;
+  transition: 0.4s ease;
+  z-index: 1;
 }
 
-.arrow {
-	position: fixed;
-	background-color: transparent;
-	color: white;
-	padding: 20px;
-	font-size: 30px;
-	border: 2px solid orange;
-	top: 50%;
-	transform: translateY(-50%);
-	cursor: pointer;
+.app-18 .slide.active {
+  opacity: 1;
 }
 
-.arrow:focus {
-	outline: 0;
+.app-18 .arrow {
+  position: fixed;
+  background-color: transparent;
+  color: white;
+  padding: 20px;
+  font-size: 30px;
+  border: 2px solid orange;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
 
-.left-arrow {
-	left: calc(15vw - 65px);
+.app-18 .arrow:focus {
+  outline: 0;
 }
-.right-arrow {
-	right: calc(15vw - 65px);
+
+.app-18 .left-arrow {
+  left: calc(15vw - 65px);
+}
+.app-18 .right-arrow {
+  right: calc(15vw - 65px);
 }
