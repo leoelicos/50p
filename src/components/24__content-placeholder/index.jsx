@@ -1,40 +1,80 @@
+import { useEffect, useState } from 'react'
+import './style/style.css'
+const data = {
+  header: (
+    <img
+      src='https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&ixid=eyJhcHBfaWqiOjEyMDd9@auto=format&fit=crop&w=2102&q=80'
+      alt=''
+    />
+  ),
+  title: 'Lorem ipsum dolor sit amet.',
+  excerpt: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus, aspernatur. ',
+  profile_img: (
+    <img
+      src='https://randomuser.me/api/portraits/men/45.jpg'
+      alt=''
+    />
+  ),
+  name: 'John Doe',
+  date: 'Oct 08, 2020'
+}
 export default function ContentPlaceholder() {
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 2500)
+  }, [])
   return (
     <div className='app-24'>
       <div className='body'>
         <div className='card'>
           <div
-            className='card-header animated-bg'
+            className={`card-header ${loading ? 'animated-bg' : ''}`}
             id='header'>
-            &nbsp;
+            {loading ? <>&nbsp;</> : data.header}
           </div>
           <div className='card-content'>
             <h3
-              className='card-title animated-bg animated-bg-text'
+              className={`card-title ${loading ? 'animated-bg animated-bg-text' : ''}`}
               id='title'>
-              &nbsp;
+              {loading ? <>&nbsp;</> : data.title}
             </h3>
             <p
               className='card-excerpt'
               id='excerpt'>
-              &nbsp;<span className='animated-bg animated-bg-text'>&nbsp;</span>
+              {loading ? (
+                <>
+                  &nbsp;
+                  <span className={loading ? `animated-bg animated-bg-text` : ''} />
+                </>
+              ) : (
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus, aspernatur.'
+              )}
             </p>
             <div className='author'>
               <div
-                className='profile-img animated-bg'
+                className={`profile-img ${loading ? 'animated-bg' : ''}`}
                 id='profile_img'>
-                &nbsp;
+                {loading ? (
+                  <>&nbsp;</>
+                ) : (
+                  <img
+                    src='https://randomuser.me/api/portraits/men/45.jpg'
+                    alt='picture of a young man'
+                  />
+                )}
               </div>
               <div className='author-info'>
                 <strong
-                  className='animated-bg animated-bg-text'
+                  className={loading ? 'animated-bg animated-bg-text' : ''}
                   id='name'>
-                  &nbsp;
+                  {loading ? <>&nbsp;</> : 'John Doe'}
                 </strong>
                 <small
-                  className='animated-bg animated-bg-text'
+                  className={loading ? 'animated-bg animated-bg-text' : ''}
                   id='date'>
-                  &nbsp;
+                  {loading ? <>&nbsp;</> : 'Oct 08, 2020'}
                 </small>
               </div>
             </div>
@@ -43,29 +83,4 @@ export default function ContentPlaceholder() {
       </div>
     </div>
   )
-}
-
-const header = document.getElementById('header')
-const title = document.getElementById('title')
-const excerpt = document.getElementById('excerpt')
-const profile_img = document.getElementById('profile_img')
-const name = document.getElementById('name')
-const date = document.getElementById('date')
-
-// node lists
-const animated_bgs = document.querySelectorAll('.animated-bg')
-const animated_bg_texts = document.querySelectorAll('.animated-bg-text')
-
-setTimeout(getData, 2500)
-
-function getData() {
-  header.innerHTML = '<img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&ixid=eyJhcHBfaWqiOjEyMDd9@auto=format&fit=crop&w=2102&q=80" alt="" />'
-  title.innerHTML = 'Lorem ipsum dolor sit amet.'
-  excerpt.innerHTML = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus, aspernatur. '
-  profile_img.innerHTML = '<img src="https://randomuser.me/api/portraits/men/45.jpg" alt="" />'
-  name.innerHTML = 'John Doe'
-  date.innerHTML = 'Oct 08, 2020'
-
-  animated_bgs.forEach((bg) => bg.classList.remove('animated-bg'))
-  animated_bg_texts.forEach((bg) => bg.classList.remove('animated-bg-text'))
 }
