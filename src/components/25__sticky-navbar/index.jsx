@@ -1,9 +1,23 @@
+import { useEffect, useRef, useState } from 'react'
 import './style/style.css'
 export default function StickyNavbar() {
+  const [active, setActive] = useState(false)
+  const nav = useRef(null)
+
+  useEffect(() => {
+    window.addEventListener('scroll', fixNav)
+  }, [])
+
+  function fixNav() {
+    setActive(window.scrollY > nav.current.offsetHeight + 150)
+  }
+
   return (
     <div className='app-25'>
       <div className='body'>
-        <nav className='nav'>
+        <nav
+          className={`nav ${active ? 'active' : ''}`}
+          ref={nav}>
           <div className='container'>
             <h1 className='logo'>
               <a href='./index.html'>My Website</a>
@@ -45,15 +59,4 @@ export default function StickyNavbar() {
       </div>
     </div>
   )
-}
-
-const nav = document.querySelector('.nav')
-window.addEventListener('scroll', fixNav)
-
-function fixNav() {
-  if (window.scrollY > nav.offsetHeight + 150) {
-    nav.classList.add('active')
-  } else {
-    nav.classList.remove('active')
-  }
 }
