@@ -5,17 +5,13 @@ export default function DrawingApp() {
   const canvas = useRef(null)
 
   const [pressed, setPressed] = useState(false)
-  const [x, setX] = useState(undefined)
-  const [y, setY] = useState(undefined)
+  const x = useRef(undefined)
+  const y = useRef(undefined)
   const [size, setSize] = useState(10)
   const [color, setColor] = useState('black')
 
-  const [ctx, setCtx] = useState(null)
-  useEffect(() => {
-    setCtx(canvas.current.getContext('2d'))
-  }, [canvas])
-
   function drawCircle(x, y) {
+    const ctx = canvas.current.getContext('2d')
     ctx.beginPath()
     ctx.arc(x, y, size, 0, Math.PI * 2)
     ctx.fillStyle = color
@@ -23,6 +19,7 @@ export default function DrawingApp() {
   }
 
   function drawLine(x1, y1, x2, y2) {
+    const ctx = canvas.current.getContext('2d')
     ctx.beginPath()
     ctx.moveTo(x1, y1)
     ctx.lineTo(x2, y2)
@@ -39,44 +36,44 @@ export default function DrawingApp() {
           width='800'
           height='800'
           onMouseDown={(e) => {
-            console.log('onMouseDown')
             setPressed(true)
-            setX(e.offsetX)
-            setY(e.offsetY)
+            x.current = e.nativeEvent.offsetX
+            y.current = e.nativeEvent.offsetY
           }}
           onMouseUp={(e) => {
-            console.log('onMouseUp')
             setPressed(false)
-            setX(undefined)
-            setY(undefined)
+            x.current = undefined
+            y.current = undefined
           }}
           onMouseMove={(e) => {
             if (pressed) {
-              console.log('onMouseMove pressed')
-              const x2 = e.offsetX
-              const y2 = e.offsetY
+              const x2 = e.nativeEvent.offsetX
+              const y2 = e.nativeEvent.offsetY
               drawCircle(x2, y2)
-              drawLine(x, y, x2, y2)
+              drawLine(x.current, y.current, x2, y2)
 
-              setX(x2)
-              setY(y2)
+              x.current = x2
+              y.current = y2
             }
           }}
         />
         <div className='toolbox'>
-          <button onClick={() => setSize((prev) => Math.min(prev + 5, 50))}>-</button>
-          <span id='size'>10</span>
-          <button onClick={() => setSize((prev) => Math.max(prev - 5, 0))}>+</button>
+          <button onClick={() => setSize((prev) => Math.max(prev - 5, 0))}>-</button>
+          <span id='size'>{size}</span>
+          <button onClick={() => setSize((prev) => Math.min(prev + 5, 50))}>+</button>
           <input
             type='color'
+            value={color}
             onChange={(e) => {
-              setColor(e.target.value)
+              const newColor = e.target.value
+              setColor(newColor)
             }}
           />
           <button
             id='clear'
             onClick={() => {
-              ctx.clearRect(0, 0, canvas.width, canvas.height)
+              const ctx = canvas.current.getContext('2d')
+              ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
             }}>
             X
           </button>
