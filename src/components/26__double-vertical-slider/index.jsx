@@ -1,37 +1,65 @@
+import './style/style.css'
+import data from './data/index'
+import { useEffect, useRef, useState } from 'react'
 export default function DoubleVerticalSlider() {
+  const [active, setActive] = useState(0)
+  const sliderContainer = useRef(null)
+  const slidesLength = data.length
+  const sliderHeight = useRef(null)
+  useEffect(() => {
+    sliderHeight.current = sliderContainer.current.clientHeight
+  }, [sliderContainer.curren])
   return (
     <div className='app-26'>
       <div className='body'>
-        <div className='slider-container'>
-          <div className='left-slide'>
-            <div style='background-color: #fd3555'>
+        <div
+          className='slider-container'
+          ref={sliderContainer}>
+          <div
+            className='left-slide'
+            style={{ top: `-${(slidesLength - 1) * 100}vh`, transform: `translateY(${active * sliderHeight.current}px)` }}>
+            <div style={{ backgroundColor: '#fd3555' }}>
               <h1>Nature flower</h1>
               <p>all in pink</p>
             </div>
-            <div style='background-color: #2a86ba'>
+            <div style={{ backgroundColor: '#2a86ba' }}>
               <h1>Bluuue Sky</h1>
               <p>with it's mountains</p>
             </div>
-            <div style='background-color: #252e33'>
+            <div style={{ backgroundColor: '#252e33' }}>
               <h1>Lonely castle</h1>
               <p>in the wilderness</p>
             </div>
-            <div style='background-color: #ffb866'>
+            <div style={{ backgroundColor: '#ffb866' }}>
               <h1>Flying eagle</h1>
               <p>in the sunset</p>
             </div>
           </div>
-          <div className='right-slide'>
-            <div style="background-image: url('https://images.unsplash.com/photo-1508768787810-6adc1f613514?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e27f6661df21ed17ab5355b28af8df4e&auto=format&fit=crop&w=1350&q=80')"></div>
-            <div style="background-image: url('https://images.unsplash.com/photo-1519981593452-666cf05569a9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=90ed8055f06493290dad8da9584a13f7&auto=format&fit=crop&w=715&q=80')"></div>
-            <div style="background-image: url('https://images.unsplash.com/photo-1486899430790-61dbf6f6d98b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8ecdee5d1b3ed78ff16053b0227874a2&auto=format&fit=crop&w=1002&q=80')"></div>
-            <div style="background-image: url('https://images.unsplash.com/photo-1510942201312-84e7962f6dbb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=da4ca7a78004349f1b63f257e50e4360&auto=format&fit=crop&w=1050&q=80')"></div>
+          <div
+            className='right-slide'
+            style={{ transform: `translateY(-${active * sliderHeight.current}px)` }}>
+            {data.map((link) => {
+              return (
+                <div
+                  key={link}
+                  style={{ backgroundImage: `url(${link})` }}
+                />
+              )
+            })}
           </div>
           <div className='action-buttons'>
-            <button className='down-button'>
+            <button
+              className='down-button'
+              onClick={() => {
+                setActive((prev) => (prev - 1 < 0 ? slidesLength - 1 : prev - 1))
+              }}>
               <i className='fas fa-arrow-down'></i>
             </button>
-            <button className='up-button'>
+            <button
+              className='up-button'
+              onClick={() => {
+                setActive((prev) => (prev + 1 === slidesLength ? 0 : prev + 1))
+              }}>
               <i className='fas fa-arrow-up'></i>
             </button>
           </div>
