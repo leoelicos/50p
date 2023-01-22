@@ -68,9 +68,9 @@ const Right = ({ children, handleMouseEnterRight, handleMouseLeaveRight }) => (
   </div>
 )
 const Link = ({ children }) => (
-  <a
-    href='#'
-    className='btn'>
+  <button
+    className='btn'
+    style={{}}>
     {children}
-  </a>
+  </button>
 )
