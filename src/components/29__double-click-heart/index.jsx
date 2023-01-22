@@ -7,7 +7,8 @@ export default function DoubleClickHeart() {
 
   const [hearts, setHearts] = useState([])
 
-  const updateHearts = (timestamp) => setHearts((prev) => prev.filter((heart) => heart.timestamp !== timestamp))
+  const removeHeart = (timestamp) => setHearts((prev) => prev.filter((heart) => heart.timestamp !== timestamp))
+  const addHeart = (yInside, xInside, timestamp) => setHearts((prev) => prev.slice().concat({ yInside, xInside, timestamp }))
 
   const handleClick = (e) => {
     let t = new Date().getTime()
@@ -16,11 +17,11 @@ export default function DoubleClickHeart() {
       heart.classList.add('fas')
       heart.classList.add('fa-heart')
 
-      setHearts((prev) => prev.slice().concat({ timestamp: new Date().getTime(), yInside: e.clientY - e.target.offsetTop, xInside: e.clientX - e.target.offsetLeft }))
+      addHeart(e.clientY - e.target.offsetTop, e.clientX - e.target.offsetLeft, new Date().getTime())
 
       setTimesClicked((prev) => prev + 1)
 
-      setTimeout(updateHearts, 1000)
+      setTimeout(removeHeart, 1000)
 
       setClickTime(0)
     } else {
