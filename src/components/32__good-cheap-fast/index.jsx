@@ -1,4 +1,10 @@
+import { useState } from 'react'
+import './style/style.css'
+
 export default function GoodCheapFast() {
+  const [good, setGood] = useState(false)
+  const [cheap, setCheap] = useState(false)
+  const [fast, setFast] = useState(false)
   return (
     <div className='app-32'>
       <div className='body'>
@@ -8,6 +14,13 @@ export default function GoodCheapFast() {
             type='checkbox'
             id='good'
             className='toggle'
+            checked={good}
+            onChange={(e) => {
+              setGood(() => {
+                if (cheap && fast) setFast(false)
+                return e.target.checked
+              })
+            }}
           />
           <label
             htmlFor='good'
@@ -21,6 +34,13 @@ export default function GoodCheapFast() {
             type='checkbox'
             id='cheap'
             className='toggle'
+            checked={cheap}
+            onChange={(e) => {
+              setCheap(() => {
+                if (good && fast) setGood(false)
+                return e.target.checked
+              })
+            }}
           />
           <label
             htmlFor='cheap'
@@ -34,6 +54,13 @@ export default function GoodCheapFast() {
             type='checkbox'
             id='fast'
             className='toggle'
+            checked={fast}
+            onChange={(e) => {
+              setFast(() => {
+                if (good && cheap) setCheap(false)
+                return e.target.checked
+              })
+            }}
           />
           <label
             htmlFor='fast'
@@ -46,23 +73,3 @@ export default function GoodCheapFast() {
     </div>
   )
 }
-
-/* const toggles = document.querySelectorAll('.toggle');
-const good = document.querySelector('#good');
-const cheap = document.querySelector('#cheap');
-const fast = document.querySelector('#fast');
-
-toggles.forEach((toggle) => toggle.addEventListener('change', (e) => doTheTrick(e.target)));
-function doTheTrick(theClickedOne) {
-	if (good.checked && cheap.checked && fast.checked) {
-		if (good === theClickedOne) {
-			fast.checked = false;
-		}
-		if (cheap === theClickedOne) {
-			good.checked = false;
-		}
-		if (fast === theClickedOne) {
-			cheap.checked = false;
-		}
-	}
-} */
