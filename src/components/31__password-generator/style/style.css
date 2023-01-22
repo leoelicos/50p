@@ -43,7 +43,7 @@
   width: 100%;
 }
 
-.app-31 .result-container #result {
+.app-31 .result-container span {
   word-wrap: break-word;
   max-width: calc(100% - 40px);
 }
