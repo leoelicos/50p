@@ -150,6 +150,7 @@ const Card = ({ error, errorMessage, user, repos, loadingUser, loadingUserRepos 
                     key={name}
                     className='repo'
                     href={html_url}
+                    rel='noreferrer'
                     target='_blank'>
                     {name}
                   </a>
