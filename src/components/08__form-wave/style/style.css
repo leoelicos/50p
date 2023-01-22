@@ -27,9 +27,10 @@
   margin-bottom: 30px;
 }
 
-.app-08 .container a {
+.app-08 .container .link {
   text-decoration: none;
   color: lightblue;
+  cursor: pointer;
 }
 
 .app-08 .btn {
