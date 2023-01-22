@@ -1,58 +1,67 @@
+import { useState } from 'react'
+import './style/style.css'
+
 export default function DoubleClickHeart() {
+  const [clickTime, setClickTime] = useState(0)
+  const [timesClicked, setTimesClicked] = useState(0)
+
+  const [hearts, setHearts] = useState([])
+
+  const updateHearts = (timestamp) => setHearts((prev) => prev.filter((heart) => heart.timestamp !== timestamp))
+
+  const handleClick = (e) => {
+    let t = new Date().getTime()
+    if (clickTime > 0 && t - clickTime < 800) {
+      const heart = document.createElement('i')
+      heart.classList.add('fas')
+      heart.classList.add('fa-heart')
+
+      setHearts((prev) => prev.slice().concat({ timestamp: new Date().getTime(), yInside: e.clientY - e.target.offsetTop, xInside: e.clientX - e.target.offsetLeft }))
+
+      setTimesClicked((prev) => prev + 1)
+
+      setTimeout(updateHearts, 1000)
+
+      setClickTime(0)
+    } else {
+      setClickTime(t)
+    }
+  }
+
   return (
-    <div className='app-29'>
-      <div className='body'>
+    <App>
+      <Body>
         <h3>
           Double click on the image to <i className='fas fa-heart'></i> it
         </h3>
         <small>
-          You liked it <span id='times'>0</span> times
+          You liked it <Times timesClicked={timesClicked} /> times
         </small>
-        <div className='loveMe'></div>
-      </div>
-    </div>
+        <LoveMe
+          handleClick={handleClick}
+          hearts={hearts}
+        />
+      </Body>
+    </App>
   )
 }
-
-const loveMe = document.querySelector('.loveMe')
-const times = document.querySelector('#times')
-
-let clickTime = 0
-let timesClicked = 0
-
-loveMe.addEventListener('click', (e) => {
-  if (clickTime === 0) {
-    clickTime = new Date().getTime()
-  } else {
-    if (new Date().getTime() - clickTime < 800) {
-      createHeart(e)
-      clickTime = 0
-    } else {
-      clickTime = new Date().getTime()
-    }
-  }
-})
-
-const createHeart = (e) => {
-  const heart = document.createElement('i')
-  heart.classList.add('fas')
-  heart.classList.add('fa-heart')
-
-  const x = e.clientX
-  const y = e.clientY
-
-  const leftOffset = e.target.offsetLeft
-  const topOffset = e.target.offsetTop
-
-  const xInside = x - leftOffset
-  const yInside = y - topOffset
-
-  heart.style.top = `${yInside}px`
-  heart.style.left = `${xInside}px`
-
-  loveMe.appendChild(heart)
-
-  times.innerHTML = ++timesClicked
-
-  setTimeout(() => heart.remove(), 1000)
+const App = ({ children }) => <div className='app-29'>{children}</div>
+const Body = ({ children }) => <div className='body'>{children}</div>
+const Times = ({ timesClicked }) => {
+  return <span>{timesClicked}</span>
+}
+const LoveMe = ({ handleClick, hearts }) => {
+  return (
+    <div
+      className='loveMe'
+      onClick={handleClick}>
+      {hearts.map(({ timestamp, xInside, yInside }) => (
+        <i
+          className='fas fa-heart'
+          style={{ top: `${yInside}px`, left: `${xInside}px` }}
+          key={timestamp}
+        />
+      ))}
+    </div>
+  )
 }
