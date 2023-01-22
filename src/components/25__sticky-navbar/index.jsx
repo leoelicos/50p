@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import './style/style.css'
 export default function StickyNavbar() {
   const [active, setActive] = useState(false)
@@ -19,25 +20,27 @@ export default function StickyNavbar() {
           className={`nav ${active ? 'active' : ''}`}
           ref={nav}>
           <div className='container'>
-            <h1 className='logo'>
-              <a href='./index.html'>My Website</a>
+            <h1
+              className='logo'
+              style={{ margin: 0, fontSize: '1.5em' }}>
+              <Link
+                to={'/25-sticky-navbar'}
+                style={{ fontSize: 'unset' }}>
+                My Website
+              </Link>
             </h1>
             <ul>
               <li>
-                <a
-                  href='#'
-                  className='current'>
-                  Home
-                </a>
+                <button className='link current'>Home</button>
               </li>
               <li>
-                <a href='#'>About</a>
+                <button className='link'>About</button>
               </li>
               <li>
-                <a href='#'>Services</a>
+                <button className='link'>Services</button>
               </li>
               <li>
-                <a href='#'>Contact</a>
+                <button className='link'>Contact</button>
               </li>
             </ul>
           </div>

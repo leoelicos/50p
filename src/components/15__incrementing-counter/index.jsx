@@ -34,7 +34,7 @@ function Counter({ style, target, text }) {
         setVal(target)
       } else setVal((prev) => prev + Math.floor(target / 200))
     }, 1)
-  }, [val])
+  }, [val, target])
 
   return (
     <div className='counter-container'>

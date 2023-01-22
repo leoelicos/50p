@@ -45,6 +45,7 @@
   text-transform: uppercase;
   width: 15rem;
   padding: 1.5rem;
+  background-color: transparent;
 }
 .app-07 .split.left .btn:hover {
   background-color: var(--left-btn-hover-color);

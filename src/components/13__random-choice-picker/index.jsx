@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import './style/style.css'
 export default function RandomChoicePicker() {
   const textarea = useRef(null)
@@ -19,13 +19,29 @@ export default function RandomChoicePicker() {
     )
   }, [typed])
 
+  const randomSelect = useCallback(
+    function randomSelect() {
+      const times = 30
+
+      const interval = setInterval(() => {
+        const randomTag = Math.floor(Math.random() * tags.length)
+        setHighlighted(randomTag)
+      }, 100)
+
+      setTimeout(() => {
+        clearInterval(interval)
+      }, times * 100)
+    },
+    [tags.length]
+  )
+
   useEffect(() => {
     if (lastKey === 'Enter') {
       setTyped((prev) => prev.slice(0, -1))
       randomSelect()
       setLastKey(null)
     }
-  }, [lastKey])
+  }, [lastKey, randomSelect])
 
   useEffect(() => {
     textarea.current.addEventListener('keyup', (e) => setLastKey(e.key))
@@ -34,23 +50,6 @@ export default function RandomChoicePicker() {
   useEffect(() => {
     textarea.current.focus()
   }, [])
-
-  function pickRandomTag() {
-    return Math.floor(Math.random() * tags.length)
-  }
-
-  function randomSelect() {
-    const times = 30
-
-    const interval = setInterval(() => {
-      const randomTag = pickRandomTag()
-      setHighlighted(randomTag)
-    }, 100)
-
-    setTimeout(() => {
-      clearInterval(interval)
-    }, times * 100)
-  }
 
   return (
     <div className='app-13'>

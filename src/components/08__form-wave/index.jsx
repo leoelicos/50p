@@ -41,7 +41,7 @@ export default function FormWave() {
             </FormControl>
             <Button>Login</Button>
             <Text>
-              Don't have an account? <a href='#'>Register</a>
+              Don't have an account? <span className='link'>Register</span>
             </Text>
           </form>
         </Container>
