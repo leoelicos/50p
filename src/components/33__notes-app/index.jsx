@@ -1,9 +1,17 @@
 import Markdown from 'marked-react'
 
+import './style/style.css'
+
 export default function NotesApp() {
   return (
-    <div>
-      <Markdown># Hello world!</Markdown>
+    <div className='app-33'>
+      <div className='body'>
+        <button
+          className='add'
+          id='add'>
+          <i className='fas fa-plus'></i> Add note
+        </button>
+      </div>
     </div>
   )
 }
@@ -24,12 +32,12 @@ function addNewNote(text = '') {
 	const note = document.createElement('div');
 	note.classList.add('note');
 	note.innerHTML = `
-   <div class="tools">
-      <button class="edit"><i class="fas fa-edit"></i></button>
-      <button class="delete"><i class="fas fa-trash-alt"></i></button>
+   <div className="tools">
+      <button className="edit"><i className="fas fa-edit"></i></button>
+      <button className="delete"><i className="fas fa-trash-alt"></i></button>
    </div>			
-   <div class="main ${text ? '' : 'hidden'}"></div>
-   <textarea class=" ${text ? 'hidden' : ''}"></textarea>
+   <div className="main ${text ? '' : 'hidden'}"></div>
+   <textarea className=" ${text ? 'hidden' : ''}"></textarea>
    `;
 
 	const editBtn = note.querySelector('.edit');
