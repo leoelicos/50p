@@ -32,6 +32,9 @@
   height: 400px;
   width: 400px;
 }
+.app-33 .note:not(.editing) {
+  background-color: #e2e2e2;
+}
 
 .app-33 .note .tools {
   background-color: #9ec862;
