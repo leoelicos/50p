@@ -5,6 +5,7 @@ import './style/style.css'
 
 export default function NotesApp() {
   const [notes, setNotes] = useState([])
+
   const handleTextChange = (text, timestamp) => {
     setNotes((prev) => prev.map((v) => (v.timestamp === timestamp ? { ...v, text } : v)))
   }
@@ -14,24 +15,29 @@ export default function NotesApp() {
   useEffect(() => {
     setNotes(JSON.parse(localStorage.getItem('notes')))
   }, [])
+
   useEffect(() => {
     localStorage.setItem('notes', JSON.stringify(notes.filter((note) => note.text.length > 0)))
   }, [notes])
 
   const addNote = () => {
-    setNotes(notes.slice().concat({ text: '', timestamp: new Date().getTime() }))
+    const timestamp = new Date().getTime()
+    setNotes(notes.slice().concat({ text: '', timestamp })) //
   }
+
   return (
     <App>
       <Body>
-        <AddButton addNote={addNote} />
-        {notes.map(({ text, timestamp }) => (
+        <AddButton handleAdd={addNote} />
+
+        {notes.map(({ text, timestamp }, i) => (
           <Note
             key={timestamp}
             text={text}
             timestamp={timestamp}
             handleTextChange={handleTextChange}
             handleDelete={handleDelete}
+            isLast={i === notes.length - 1}
           />
         ))}
       </Body>
@@ -41,44 +47,66 @@ export default function NotesApp() {
 
 const App = ({ children }) => <div className='app-33'>{children}</div>
 const Body = ({ children }) => <div className='body'>{children}</div>
-const AddButton = ({ addNote }) => (
+const AddButton = ({ handleAdd }) => (
   <button
     className='add'
-    onClick={addNote}>
+    onClick={handleAdd}>
     <i className='fas fa-plus'></i> Add note
   </button>
 )
-const Note = ({ text, timestamp, handleDelete, handleTextChange }) => {
+const EditButton = ({ handleClickEdit }) => (
+  <button
+    className='edit'
+    onClick={handleClickEdit}>
+    <i className='fas fa-edit'></i>
+  </button>
+)
+const DeleteButton = ({ handleClickDelete }) => (
+  <button
+    className='delete'
+    onClick={handleClickDelete}>
+    <i className='fas fa-trash-alt'></i>
+  </button>
+)
+const TextArea = ({ editing, text, handleTextChange, isLast, timestamp }) => (
+  <textarea
+    className={editing ? '' : 'hidden'}
+    value={text}
+    onInput={(e) => {
+      handleTextChange(e.target.value, timestamp)
+    }}
+    autoFocus={isLast}>
+    {text}
+  </textarea>
+)
+const Main = ({ editing, children }) => <div className={`main ${editing ? 'hidden' : ''}`}>{children}</div>
+const Note = ({ text, timestamp, handleDelete, handleTextChange, isLast }) => {
   const [editing, setEditing] = useState(text.length > 0 ? false : true)
+
+  const handleClickEdit = () => {
+    if (editing) isLast = true
+    setEditing((prev) => !prev)
+  }
+  const handleClickDelete = () => {
+    handleDelete(timestamp)
+  }
+
   return (
-    <div className='note'>
+    <div className={`note ${editing ? 'editing' : ''}`}>
       <div className='tools'>
-        <button
-          className='edit'
-          onClick={() => {
-            setEditing((prev) => !prev)
-          }}>
-          <i className='fas fa-edit'></i>
-        </button>
-        <button
-          className='delete'
-          onClick={() => {
-            handleDelete(timestamp)
-          }}>
-          <i className='fas fa-trash-alt'></i>
-        </button>
+        <EditButton handleClickEdit={handleClickEdit} />
+        <DeleteButton handleClickDelete={handleClickDelete} />
       </div>
-      <div className={`main ${editing ? 'hidden' : ''}`}>
+      <Main editing={editing}>
         <Markdown>{text}</Markdown>
-      </div>
-      <textarea
-        className={editing ? '' : 'hidden'}
-        value={text}
-        onInput={(e) => {
-          handleTextChange(e.target.value, timestamp)
-        }}>
-        {text}
-      </textarea>
+      </Main>
+      <TextArea
+        editing={editing}
+        text={text}
+        handleTextChange={handleTextChange}
+        isLast={isLast}
+        timestamp={timestamp}
+      />
     </div>
   )
 }
