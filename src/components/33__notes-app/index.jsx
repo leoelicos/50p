@@ -15,21 +15,8 @@ export default function NotesApp() {
     setNotes(JSON.parse(localStorage.getItem('notes')))
   }, [])
   useEffect(() => {
-    localStorage.setItem('notes', JSON.stringify(notes))
+    localStorage.setItem('notes', JSON.stringify(notes.filter((note) => note.text.length > 0)))
   }, [notes])
-
-  useEffect(() => {
-    return () => {
-      const y = notes.filter((note) => {
-        const res = note.text.length > 0
-        console.log({ note, res })
-        return res
-      })
-      const x = JSON.stringify(y)
-      localStorage.setItem('notes', x)
-      debugger
-    }
-  }, [])
 
   const addNote = () => {
     setNotes(notes.slice().concat({ text: '', timestamp: new Date().getTime() }))
