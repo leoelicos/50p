@@ -10,6 +10,8 @@
   flex-wrap: wrap;
   margin: 0;
   padding-top: 3rem;
+  height: 100vh;
+  overflow-y: auto;
 }
 
 .app-33 .add {
