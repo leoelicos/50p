@@ -1,3 +1,12 @@
 export default function Pokedex() {
-  return <div>Pokedex</div>
+  return (
+    <div className='app-37'>
+      <div className='body'>
+        <h1>Pokedex</h1>
+        <div
+          className='poke-container'
+          id='poke-container'></div>
+      </div>
+    </div>
+  )
 }
