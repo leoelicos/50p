@@ -1,35 +1,29 @@
 import { useState } from 'react'
 import './style/style.css'
-export default function AnimatedCountdown() {
-  const nums = document.querySelectorAll('.nums span')
-  const [final, setFinal] = useState(false)
 
-  runAnimation()
+export default function AnimatedCountdown() {
+  const initialState = [
+    { val: 3, animation: 'in' },
+    { val: 2, animation: '' },
+    { val: 1, animation: '' },
+    { val: 0, animation: '' }
+  ]
+  const [nums, setNums] = useState(initialState)
+  const [final, setFinal] = useState(false)
 
   function resetDOM() {
     setFinal(false)
-
-    nums.forEach((num) => {
-      num.classList.value = ''
-    })
-
-    nums[0].classList.add('in')
+    setNums(initialState)
   }
 
-  function runAnimation() {
-    nums.forEach((num, idx) => {
-      const nextToLast = nums.length - 1
-      num.addEventListener('animationend', (e) => {
-        if (e.animationName === 'goIn' && idx !== nextToLast) {
-          num.classList.remove('in')
-          num.classList.add('out')
-        } else if (e.animationName === 'goOut' && num.nextElementSibling) {
-          num.nextElementSibling.classList.add('in')
-        } else {
-          setFinal(true)
-        }
-      })
-    })
+  const handleAnimationEnd = (i, animationName) => {
+    if (i === 3 && animationName === 'goOut') {
+      setFinal(true)
+    } else if (animationName === 'goIn') {
+      setNums((prev) => prev.map((v, idx) => (i === idx ? { ...v, animation: 'out' } : v)))
+    } else if (animationName === 'goOut') {
+      setNums((prev) => prev.map((v, idx) => (idx === i ? { ...v, animation: '' } : idx === i + 1 ? { ...v, animation: 'in' } : v)))
+    }
   }
 
   return (
@@ -37,10 +31,16 @@ export default function AnimatedCountdown() {
       <div className='body'>
         <div className={`counter ${final ? 'hide' : ''}`}>
           <div className='nums'>
-            <span className='in'>3</span>
-            <span>2</span>
-            <span>1</span>
-            <span>0</span>
+            {nums.map(({ val, animation }, i) => (
+              <span
+                key={val}
+                className={animation}
+                onAnimationEnd={(e) => {
+                  handleAnimationEnd(i, e.animationName)
+                }}>
+                {val}
+              </span>
+            ))}
           </div>
           <h4>Get Ready</h4>
         </div>
@@ -48,10 +48,7 @@ export default function AnimatedCountdown() {
           <h1>GO</h1>
           <button
             id='replay'
-            onClick={() => {
-              resetDOM()
-              runAnimation()
-            }}>
+            onClick={resetDOM}>
             <span>Replay</span>
           </button>
         </div>
