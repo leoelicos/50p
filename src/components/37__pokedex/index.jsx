@@ -1,3 +1,4 @@
+import './style/style.css'
 export default function Pokedex() {
   return (
     <div className='app-37'>
