@@ -1,3 +1,4 @@
+import './style/style.css'
 export default function ImageCarousel() {
   return (
     <div className='app-35'>
