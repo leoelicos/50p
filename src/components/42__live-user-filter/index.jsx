@@ -8,6 +8,7 @@ export default function LiveUserFilter() {
     async function getData() {
       const res = await fetch('https://randomuser.me/api?results=50')
       const data = await res.json()
+
       setResults(data.results)
     }
     getData()
@@ -35,23 +36,24 @@ export default function LiveUserFilter() {
             id='result'
             className='user-list'>
             {results ? (
-              results.map((user) => {
-                const userString = (user.name.first + user.name.last + user.location.city + user.location.country).toLowerCase()
+              results.map(({ picture: { large }, name: { first }, name: { last }, location: { city, country } }) => {
+                const userString = (first + last + city + country).toLowerCase()
                 const searchString = search.toLowerCase()
+                const hide = !userString.includes(searchString)
                 return (
                   <li
                     key={userString}
-                    className={userString.includes(searchString) ? '' : 'hide'}>
+                    className={hide ? 'hide' : ''}>
                     <img
-                      src={user.picture.large}
-                      alt={user.name.first}
+                      src={large}
+                      alt={first}
                     />
                     <div className='user-info'>
                       <h4>
-                        {user.name.first} {user.name.last}
+                        {first} {last}
                       </h4>
                       <p>
-                        {user.location.city}, {user.location.country}
+                        {city}, {country}
                       </p>
                     </div>
                   </li>
