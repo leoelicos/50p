@@ -1,18 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './style/style.css'
 
+const boxes = new Array(16).fill(undefined).map((_, idx) => {
+  const i = Math.floor(idx / 4)
+  const j = idx % 4
+  return { i, j }
+})
 export default function _3DBackgroundBoxes() {
   const [big, setBig] = useState(true)
   const toggleBig = () => {
     setBig((prev) => !prev)
   }
-  const [boxes, setBoxes] = useState(
-    new Array(16).fill(undefined).map((_, idx) => {
-      const i = Math.floor(idx / 4)
-      const j = idx % 4
-      return { i, j }
-    })
-  )
 
   return (
     <div className='app-40'>
