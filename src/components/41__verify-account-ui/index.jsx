@@ -2,12 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import './style/style.css'
 
 export default function VerifyAccountUI() {
-  const i0 = useRef(null)
-  const i1 = useRef(null)
-  const i2 = useRef(null)
-  const i3 = useRef(null)
-  const i4 = useRef(null)
-  const i5 = useRef(null)
+  const inputRefs = useRef([])
 
   const [v0, setV0] = useState('')
   const [v1, setV1] = useState('')
@@ -16,17 +11,10 @@ export default function VerifyAccountUI() {
   const [v4, setV4] = useState('')
   const [v5, setV5] = useState('')
 
-  const getNextInput = (currentIdx) => {
-    if (currentIdx === 0) return i1.current
-    else if (currentIdx === 1) return i2.current
-    else if (currentIdx === 2) return i3.current
-    else if (currentIdx === 3) return i4.current
-    else if (currentIdx === 4) return i5.current
-    else if (currentIdx === 5) return i5.current
-  }
+  const getNextInput = (currentIdx) => inputRefs.current[currentIdx < 5 ? currentIdx + 1 : 5]
 
   useEffect(() => {
-    i0.current.focus()
+    inputRefs.current[0].focus()
   }, [])
 
   return (
@@ -40,7 +28,7 @@ export default function VerifyAccountUI() {
           </p>
           <div className='code-container'>
             <input
-              ref={i0}
+              ref={(e) => inputRefs.current.push(e)}
               type='number'
               className='code'
               placeholder='0'
@@ -57,7 +45,7 @@ export default function VerifyAccountUI() {
               }}
             />
             <input
-              ref={i1}
+              ref={(e) => inputRefs.current.push(e)}
               type='number'
               className='code'
               placeholder='0'
@@ -74,7 +62,7 @@ export default function VerifyAccountUI() {
               }}
             />
             <input
-              ref={i2}
+              ref={(e) => inputRefs.current.push(e)}
               type='number'
               className='code'
               placeholder='0'
@@ -91,7 +79,7 @@ export default function VerifyAccountUI() {
               }}
             />
             <input
-              ref={i3}
+              ref={(e) => inputRefs.current.push(e)}
               type='number'
               className='code'
               placeholder='0'
@@ -108,7 +96,7 @@ export default function VerifyAccountUI() {
               }}
             />
             <input
-              ref={i4}
+              ref={(e) => inputRefs.current.push(e)}
               type='number'
               className='code'
               placeholder='0'
@@ -125,7 +113,7 @@ export default function VerifyAccountUI() {
               }}
             />
             <input
-              ref={i5}
+              ref={(e) => inputRefs.current.push(e)}
               type='number'
               className='code'
               placeholder='0'
