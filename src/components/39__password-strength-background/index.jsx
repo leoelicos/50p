@@ -1,3 +1,4 @@
+import './style/style.css'
 export default function PasswordStrengthBackground() {
   return (
     <div className='app-39'>
