@@ -61,6 +61,8 @@
   flex: 1;
   padding: 10px;
   text-align: center;
+  background-color: none;
+  transition: background 0.2s;
 }
 
 .app-38 nav ul li p {
@@ -68,7 +70,15 @@
   margin: 2px 0;
 }
 
-.app-38 nav ul li:hover,
 .app-38 nav ul li.active {
   color: #8e44ad;
+}
+.app-38 nav ul li:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: background 0.2s;
+}
+
+.app-38 nav ul li:active {
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: background 0.2s;
 }
