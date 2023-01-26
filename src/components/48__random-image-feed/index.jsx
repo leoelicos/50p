@@ -18,6 +18,7 @@ export default function RandomImageFeed() {
           {data.map((img, i) => (
             <img
               src={img}
+              alt=''
               key={img + i}
             />
           ))}
