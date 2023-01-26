@@ -1,3 +1,4 @@
+import './style/style.css'
 export default function RandomImageFeed() {
   return (
     <div className='app-48'>
