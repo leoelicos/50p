@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './style/style.css'
 
 const data = [
@@ -38,6 +38,27 @@ export default function InsectCatchGame() {
   const increaseScore = () => {
     setScore((prev) => prev + 1)
   }
+  const timer = useRef(null)
+
+  const [time, setTime] = useState({ m: '00', s: '00' })
+
+  useEffect(() => {
+    function increaseTime() {
+      setTime((prev) => {
+        const v1 = (+prev.s === 59 ? +prev.m + 1 : +prev.m).toString().padStart(2, '0')
+        const v2 = ((+prev.s + 1) % 60).toString().padStart(2, '0')
+        console.log({ v1, v2 })
+        return {
+          m: v1,
+          s: v2
+        }
+      })
+    }
+    if (game === 2) {
+      clearInterval(timer.current)
+      timer.current = setInterval(increaseTime, 1000)
+    }
+  }, [game])
 
   return (
     <div className='app-50'>
@@ -47,7 +68,9 @@ export default function InsectCatchGame() {
           <button
             className='btn'
             id='start-btn'
-            onClick={() => setGame(1)}>
+            onClick={() => {
+              setGame(1)
+            }}>
             Play Game
           </button>
         </div>
@@ -90,7 +113,7 @@ export default function InsectCatchGame() {
           <h3
             id='time'
             className='time'>
-            Time: 00:00
+            Time: {time.m}:{time.s}
           </h3>
           <h3
             id='score'
