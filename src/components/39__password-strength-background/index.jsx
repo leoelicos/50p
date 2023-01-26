@@ -50,7 +50,6 @@ export default function PasswordStrengthBackground() {
               value={input}
               onInput={(e) => {
                 const input = e.target.value
-                console.log(input)
                 setInput(input)
                 const length = input.length
                 const blurValue = 20 - length * 2
