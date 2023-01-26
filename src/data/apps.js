@@ -95,11 +95,11 @@ const apps = [
   { name: 'Feedback UI Design', link: '43-feedback-ui-design', element: <FeedbackUIDesign /> },
   { name: 'Custom Range Slider', link: '44-custom-range-slider', element: <CustomRangeSlider /> },
   { name: 'Netflix Mobile Navigation', link: '45-netflix-mobile-navigation', element: <NetflixMobileNavigation /> },
-  { name: 'break' },
   { name: 'Quiz App', link: '46-quiz-app', element: <QuizApp /> },
   { name: 'Testimonial Box Switcher', link: '47-testimonial-box-switcher', element: <TestimonialBoxSwitcher /> },
   { name: 'Random Image Feed', link: '48-random-image-feed', element: <RandomImageFeed /> },
   { name: 'Todo List', link: '49-todo-list', element: <TodoList /> },
+  { name: 'break' },
   { name: 'Insect Catch Game', link: '50-insect-catch-game', element: <InsectCatchGame /> }
 ]
 export default apps
