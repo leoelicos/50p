@@ -99,7 +99,6 @@ const apps = [
   { name: 'Testimonial Box Switcher', link: '47-testimonial-box-switcher', element: <TestimonialBoxSwitcher /> },
   { name: 'Random Image Feed', link: '48-random-image-feed', element: <RandomImageFeed /> },
   { name: 'Todo List', link: '49-todo-list', element: <TodoList /> },
-  { name: 'break' },
   { name: 'Insect Catch Game', link: '50-insect-catch-game', element: <InsectCatchGame /> }
 ]
 export default apps
