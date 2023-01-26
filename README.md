@@ -4,58 +4,58 @@ This is a React implementation of [50 projects in 50 days](https://github.com/br
 
 ## Projects
 
-|     |                               | React hooks |
-| --- | ----------------------------- | ----------- |
-| 01  | Expanding Cards               |             |
-| 01  | Progress Steps                |             |
-| 01  | Rotating Navigation Animation |             |
-| 01  | Hidden Search Widget          |             |
-| 01  | Blurry Loading                |             |
-| 01  | Scroll Animation              |             |
-| 01  | Split Landing Page            |             |
-| 01  | Form Wave                     |             |
-| 01  | Sound Board                   |             |
-| 01  | Dad Jokes                     |             |
-| 01  | Event Keycodes                |             |
-| 01  | FAQ Collapse                  |             |
-| 01  | Random Choice Picker          |             |
-| 01  | Animated Navigation           |             |
-| 01  | Incrementing Counter          |             |
-| 01  | Drink Water                   |             |
-| 01  | Movie App                     |             |
-| 01  | Background Slider             |             |
-| 01  | Theme Clock                   |             |
-| 01  | Button Ripple Effect          |             |
-| 01  | Drag N Drop                   |             |
-| 01  | Drawing App                   |             |
-| 01  | Kinetic Loader                |             |
-| 01  | Content Placeholder           |             |
-| 01  | Sticky Navbar                 |             |
-| 01  | Double Vertical Slider        |             |
-| 01  | Toast Notification            |             |
-| 01  | Github Profiles               |             |
-| 01  | Double Click Heart            |             |
-| 01  | Auto Text Effect              |             |
-| 01  | Password Generator            |             |
-| 01  | Good Cheap Fast               |             |
-| 01  | Notes App                     |             |
-| 01  | Animated Countdown            |             |
-| 01  | Image Carousel                |             |
-| 01  | Hoverboard                    |             |
-| 01  | Pokedex                       |             |
-| 01  | Mobile Tab Navigation         |             |
-| 01  | Password Strength Background  |             |
-| 01  | 3D Background Boxes           |             |
-| 01  | Verify Account UI             |             |
-| 01  | Live User Filter              |             |
-| 01  | Feedback UI Design            |             |
-| 01  | Custom Range Slider           |             |
-| 01  | Netflix Mobile Navigation     |             |
-| 01  | Quiz App                      |             |
-| 01  | Testimonial Box Switcher      |             |
-| 01  | Random Image Feed             |             |
-| 01  | Todo List                     |             |
-| 01  | Insect Catch Game             |             |
+|     |                               | React hooks                              | Other tech      |
+| --- | ----------------------------- | ---------------------------------------- | --------------- |
+| 01  | Expanding Cards               | useState                                 |                 |
+| 01  | Progress Steps                | useState                                 |                 |
+| 01  | Rotating Navigation Animation | useState                                 |                 |
+| 01  | Hidden Search Widget          | useRef, useState                         | FontAwesomeIcon |
+| 01  | Blurry Loading                | useEffect, useState                      |                 |
+| 01  | Scroll Animation              | forwardRef, useEffect, useRef, useState  |                 |
+| 01  | Split Landing Page            | useState                                 |                 |
+| 01  | Form Wave                     | useState                                 |                 |
+| 01  | Sound Board                   |                                          | Audio           |
+| 01  | Dad Jokes                     | useEffect, useState                      | fetch           |
+| 01  | Event Keycodes                | useEffect, useState                      |                 |
+| 01  | FAQ Collapse                  | useState                                 |                 |
+| 01  | Random Choice Picker          | useCallback, useEffect, useRef, useState |                 |
+| 01  | Animated Navigation           | useState                                 |                 |
+| 01  | Incrementing Counter          | useEffect, useState                      |                 |
+| 01  | Drink Water                   | useState                                 |                 |
+| 01  | Movie App                     | useEffect, useState                      |                 |
+| 01  | Background Slider             | useState                                 |                 |
+| 01  | Theme Clock                   | useEffect, useState                      |                 |
+| 01  | Button Ripple Effect          | useState                                 |                 |
+| 01  | Drag N Drop                   | useRef, useState                         |                 |
+| 01  | Drawing App                   | useRef, useState                         |                 |
+| 01  | Kinetic Loader                |                                          | CSS keyframes   |
+| 01  | Content Placeholder           | useEffect, useState                      |                 |
+| 01  | Sticky Navbar                 | useEffect, useRef, useState              |                 |
+| 01  | Double Vertical Slider        | useEffect, useRef, useState              |                 |
+| 01  | Toast Notification            | useState                                 |                 |
+| 01  | Github Profiles               | useState                                 | axios           |
+| 01  | Double Click Heart            | useState                                 | setTimeout      |
+| 01  | Auto Text Effect              | useEffect, useRef, useState              | setInterval     |
+| 01  | Password Generator            | useState                                 |                 |
+| 01  | Good Cheap Fast               | useState                                 |                 |
+| 01  | Notes App                     | useEffect, useState                      | marked-react    |
+| 01  | Animated Countdown            | useState                                 |                 |
+| 01  | Image Carousel                | useCallback, useEffect, useRef, useState | setInterval     |
+| 01  | Hoverboard                    | useState                                 | CSS transition  |
+| 01  | Pokedex                       | useEffect, useRef, useState              | Promise.all     |
+| 01  | Mobile Tab Navigation         | useState                                 |                 |
+| 01  | Password Strength Background  | useState                                 |                 |
+| 01  | 3D Background Boxes           | useState                                 |                 |
+| 01  | Verify Account UI             | useEffect, useRef, useState              |                 |
+| 01  | Live User Filter              | useEffect, useState                      |                 |
+| 01  | Feedback UI Design            | useState                                 |                 |
+| 01  | Custom Range Slider           | useRef, useState                         |                 |
+| 01  | Netflix Mobile Navigation     | useState                                 |                 |
+| 01  | Quiz App                      | useState                                 |                 |
+| 01  | Testimonial Box Switcher      | useEffect, useRef, useState              |                 |
+| 01  | Random Image Feed             |                                          | Math.random     |
+| 01  | Todo List                     | useEffect, useState                      |                 |
+| 01  | Insect Catch Game             | useState                                 |                 |
 
 ## Learn More
 
