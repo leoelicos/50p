@@ -26,6 +26,7 @@ export default function MobileTabNavigation() {
             <ul>
               {data.map(({ name, iconClass }, i) => (
                 <li
+                  key={name}
                   className={`${show === i ? 'active' : ''}`}
                   onClick={() => {
                     setShow(i)
