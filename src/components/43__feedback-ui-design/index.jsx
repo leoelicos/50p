@@ -10,7 +10,7 @@ export default function FeedbackUIDesign() {
   const [sent, setSent] = useState(false)
 
   const [active, setActive] = useState(null)
-  const selectedRating = data.find((v, i) => active === i)?.alt ?? ''
+  const selectedRating = active ? data.find((_, i) => active === i).alt : ''
   return (
     <div className='app-43'>
       <div className='body'>
