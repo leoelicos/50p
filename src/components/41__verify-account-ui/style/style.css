@@ -41,6 +41,7 @@
   text-align: center;
   font-weight: 300;
   -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 .app-41 .code::-webkit-outer-spin-button,
