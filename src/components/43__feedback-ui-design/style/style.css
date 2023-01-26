@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.app-43 {
+  box-sizing: border-box;
+}
+.app-43 .body {
+  background-color: #fef9f2;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.app-43 .panel-container {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  font-size: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+  max-width: 400px;
+}
+
+.app-43 .panel-container strong {
+  line-height: 20px;
+}
+.app-43 .ratings-container {
+  display: flex;
+  margin: 20px 0;
+}
+.app-43 .rating {
+  flex: 1;
+  cursor: pointer;
+  padding: 20px;
+  margin: 10px 5px;
+}
+.app-43 .rating:hover,
+.rating.active {
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.app-43 .rating img {
+  width: 40px;
+  height: 40px;
+}
+
+.app-43 .rating small {
+  color: #555;
+  display: inline-block;
+  margin: 10px 0 0;
+}
+.app-43 .rating:hover small,
+.rating.active small {
+  color: #111;
+}
+
+.app-43 .btn {
+  background-color: #302d2b;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  padding: 12px 30px;
+  cursor: pointer;
+}
+.app-43 .btn:focus {
+  outline: 0;
+}
+.app-43 .btn:active {
+  transform: scale(0.98);
+}
+.app-43 .fa-heart {
+  color: red;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
