@@ -1,9 +1,13 @@
+import { useState } from 'react'
 import './style/style.css'
 export default function NetflixMobileNavigation() {
+  const [open, setOpen] = useState(false)
   return (
     <div className='app-45'>
       <div className='body'>
-        <button className='nav-btn open-btn'>
+        <button
+          className='nav-btn open-btn'
+          onClick={() => setOpen(true)}>
           <i className='fas fa-bars'></i>
         </button>
         <img
@@ -12,10 +16,12 @@ export default function NetflixMobileNavigation() {
           className='logo'
         />
         <p className='text'>Mobile Navigation</p>
-        <div className='nav nav-black'>
-          <div className='nav nav-red'>
-            <div className='nav nav-white'>
-              <button className='nav-btn close-btn'>
+        <div className={`nav nav-black ${open ? 'visible' : ''}`}>
+          <div className={`nav nav-red ${open ? 'visible' : ''}`}>
+            <div className={`nav nav-white ${open ? 'visible' : ''}`}>
+              <button
+                className='nav-btn close-btn'
+                onClick={() => setOpen(false)}>
                 <i className='fas fa-times'></i>
               </button>
 
