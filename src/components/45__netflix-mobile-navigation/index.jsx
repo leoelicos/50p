@@ -33,27 +33,27 @@ export default function NetflixMobileNavigation() {
 
               <ul className='list'>
                 <li>
-                  <a href='#'>Teams</a>
+                  <button className='nav-btn'>Teams</button>
                 </li>
                 <li>
-                  <a href='#'>Locations</a>
+                  <button className='nav-btn'>Locations</button>
                 </li>
                 <li>
-                  <a href='#'>Life at Netflix</a>
+                  <button className='nav-btn'>Life at Netflix</button>
                 </li>
                 <li>
                   <ul>
                     <li>
-                      <a href='#'>Netflix culture memo</a>
+                      <button className='nav-btn'>Netflix culture memo</button>
                     </li>
                     <li>
-                      <a href='#'>Work life balance</a>
+                      <button className='nav-btn'>Work life balance</button>
                     </li>
                     <li>
-                      <a href='#'>Inclusion & diversity</a>
+                      <button className='nav-btn'>Inclusion & diversity</button>
                     </li>
                     <li>
-                      <a href='#'>Blog</a>
+                      <button className='nav-btn'>Blog</button>
                     </li>
                   </ul>
                 </li>
