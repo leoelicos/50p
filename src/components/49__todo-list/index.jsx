@@ -1,3 +1,4 @@
+import './style/style.css'
 export default function TodoList() {
   return (
     <div className='app-49'>
