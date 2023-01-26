@@ -98,15 +98,13 @@ const generatePassword = (lower, upper, number, symbol, length) => {
   const typesCount = lower + upper + number + symbol
   if (typesCount === 0) return ''
   const typesArray = [{ lower }, { upper }, { number }, { symbol }].filter((item) => Object.values(item)[0])
+
   for (let i = 0; i < length; i += typesCount) {
     typesArray.forEach((type) => {
-      const funcName = Object.keys(type)[0]
-      generatedPassword += {
-        lower: getRandomLower,
-        upper: getRandomUpper,
-        number: getRandomNumber,
-        symbol: getRandomSymbol
-      }[funcName]()
+      if (Object.keys(type)[0] === 'lower') generatedPassword += getRandomLower()
+      else if (Object.keys(type)[0] === 'upper') generatedPassword += getRandomUpper()
+      else if (Object.keys(type)[0] === 'number') generatedPassword += getRandomNumber()
+      else if (Object.keys(type)[0] === 'symbol') generatedPassword += getRandomSymbol()
     })
   }
   return generatedPassword.slice(0, length)
