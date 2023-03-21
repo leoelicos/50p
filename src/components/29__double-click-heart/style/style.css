@@ -22,8 +22,8 @@
   text-align: center;
 }
 
-.app-29 .fa-heart {
-  color: red;
+.app-29 .heart {
+  fill: red;
 }
 
 .app-29 .loveMe {
@@ -37,10 +37,14 @@
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.app-29 .loveMe .fa-heart {
+.app-29 .red {
+  color: red;
+}
+
+.app-29 .heart {
   position: absolute;
-  animation: grow 0.6s linear;
   transform: translate(-50%, -50%) scale(0);
+  animation: grow 0.6s linear;
 }
 
 @keyframes grow {
